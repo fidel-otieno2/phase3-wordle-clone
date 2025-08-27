@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(_file_), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -37,5 +37,5 @@ def main():
         new_game = start_new_game(db, user_id, target_word_obj.word)
         play_game(db, new_game.id)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()

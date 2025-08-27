@@ -10,6 +10,7 @@ setup(
         "psycopg2-binary>=2.9.0",
         "rich>=12.0.0",
         "bcrypt>=3.2.0",
+        "alembic>=1.8.0",
     ],
     entry_points={
         "console_scripts": [

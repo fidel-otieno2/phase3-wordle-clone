@@ -16,7 +16,7 @@ def seed_words():
             return
         
         # Load words from JSON file
-        current_dir = os.path.dirname(os.path.abspath(_file_))
+        current_dir = os.path.dirname(os.path.abspath(__file__))
         words_file = os.path.join(current_dir, 'words.json')
         
         with open(words_file, 'r') as f:
@@ -36,5 +36,5 @@ def seed_words():
     finally:
         db.close()
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     seed_words()

@@ -46,3 +46,8 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# Function to get database URL for Alembic
+def get_database_url():
+    """Return the database URL based on the current configuration."""
+    return SQLALCHEMY_DATABASE_URL
