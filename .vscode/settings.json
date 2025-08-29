@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "aws-1-eu-north-1.pooler.supabase.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "password": "CQ9A4@Axf?Hw-Z6",
+            "database": "postgres",
+            "username": "postgres.szfyytdzcgljaesbwkri",
+            "name": "WordleClone DataBase"
+        }
+    ]
+}
