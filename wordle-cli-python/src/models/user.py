@@ -11,3 +11,4 @@ class User(Base):
     current_game_id = Column(Integer, ForeignKey('games.id'), nullable=True)
 
     games = relationship("Game", back_populates="user", foreign_keys="Game.user_id")
+ 

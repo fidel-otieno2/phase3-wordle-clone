@@ -16,8 +16,8 @@ DB_NAME = os.getenv("DB_NAME", "postgres")
 encoded_password = quote_plus(DB_PASSWORD)
 SQLALCHEMY_DATABASE_URL = f"postgresql://{DB_USERNAME}:{encoded_password}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-# Create PostgreSQL engine
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+# Create PostgreSQL engine and manages the the actual Database connection pool
+engine = create_engine(SQLALCHEMY_DATABASE_URL) #according to our project all the ORM queries and operations will use this engine
 
 # Create session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

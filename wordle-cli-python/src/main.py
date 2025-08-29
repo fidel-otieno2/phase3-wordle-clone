@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from rich.console import Console
 from src.config.settings import Base, SQLALCHEMY_DATABASE_URL, SessionLocal
+#importing functions that handle the UI in the terminal when the game is ongoing
 from src.views.game_view import play_game
 from src.views.login_view import login_user
 from src.views.menu_view import show_main_menu, show_statistics, show_instructions
@@ -27,7 +28,7 @@ def main():
     # Start a new database session
     db = SessionLocal()
     
-    # User login
+    # User login and this function only takes place when a user has unfinished game
     user_id, ongoing_game = login_user(db)
     
     # Show the main menu
