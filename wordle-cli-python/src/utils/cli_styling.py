@@ -4,29 +4,56 @@ from rich.panel import Panel
 from rich.text import Text
 from rich.style import Style
 
-# Custom theme for the Wordle game
+# Custom theme for the Wordle game with fancy styling
 custom_theme = Theme({
-    "success": "bold green",
-    "error": "bold red",
-    "warning": "bold yellow",
-    "info": "bold blue",
-    "highlight": "bold magenta",
-    "correct": "bold white on green",
-    "present": "bold white on yellow",
-    "absent": "bold white on red",
-    "background": "on blue",
-    "title": "bold white on blue",
+    "success": "bold green on #1a1a2e",
+    "error": "bold red on #1a1a2e",
+    "warning": "bold yellow on #1a1a2e",
+    "info": "bold cyan on #1a1a2e",
+    "highlight": "bold magenta on #1a1a2e",
+    "menu": "bold #ff6b6b on #1a1a2e",
+    "correct": "bold white on #4ecdc4",
+    "present": "bold white on #ffd93d",
+    "absent": "bold white on #6c757d",
+    "background": "on #1a1a2e",
+    "title": "bold #ff6b6b on #1a1a2e",
+    "subtitle": "italic #f8f9fa on #1a1a2e",
+    "border": "#4ecdc4",
 })
 
 console = Console(theme=custom_theme)
 
+def set_terminal_background():
+    """Set a fancy background for the terminal"""
+    console.print("\n" * 2)  # Add some space
+    console.print("[background]                                                          [/background]")
+    console.print("[background]                 WELCOME TO WORDLE CLI                    [/background]")
+    console.print("[background]                                                          [/background]")
+    console.print("\n" * 2)
+
+def print_fancy_panel(content, title="", style="info"):
+    """Print content in a fancy panel with custom styling"""
+    console.print(
+        Panel.fit(
+            content,
+            title=title,
+            style=style,
+            border_style="border",
+            padding=(1, 2)
+        )
+    )
+
 def print_welcome():
-    """Print a welcome message with styling"""
-    console.print(Panel.fit(
-        "[title]🎯 Welcome to Wordle CLI Game![/title]",
-        subtitle="Guess the 5-letter word",
-        style="background"
-    ))
+    """Print a welcome message with fancy styling"""
+    set_terminal_background()
+    console.print(
+        Panel.fit(
+            "[title]🎯 WELCOME TO WORDLE CLI GAME![/title]",
+            subtitle="[subtitle]Guess the 5-letter word challenge[/subtitle]",
+            style="background",
+            border_style="border"
+        )
+    )
 
 def print_game_status(status_message, style="info"):
     """Print game status messages with styling"""
@@ -55,7 +82,10 @@ def print_game_over(word, won=False):
         message = f"😢 Game Over! The word was: [highlight]{word}[/highlight]"
         style = "error"
     
-    console.print(Panel.fit(
-        message,
-        style=style
-    ))
+    console.print(
+        Panel.fit(
+            message,
+            style=style,
+            border_style="border"
+        )
+    )

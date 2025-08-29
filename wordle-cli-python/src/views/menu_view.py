@@ -1,30 +1,25 @@
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
-from ..utils.cli_styling import get_theme
-
-console = Console()
-theme = get_theme()
+from ..utils.cli_styling import console, print_fancy_panel
 
 def show_main_menu():
     """Display the main menu"""
     console.clear()
-    console.print(
-        Panel.fit(
-            "[bold]🎯 WORDLE CLI GAME[/bold]",
-            style=theme["primary"],
-            subtitle="Welcome to the Wordle Challenge!"
-        )
+    print_fancy_panel(
+        "[title]🎯 WORDLE CLI GAME[/title]",
+        title="Main Menu",
+        style="menu"
     )
     
-    console.print("\n[bold]Main Menu:[/bold]")
-    console.print("1. 🎮 Start New Game")
-    console.print("2. 📊 View Statistics")
-    console.print("3. ℹ️  Game Instructions")
-    console.print("4. 🚪 Exit")
+    console.print("\n[menu]Main Menu:[/menu]")
+    console.print("[menu]1. 🎮 Start New Game[/menu]")
+    console.print("[menu]2. 📊 View Statistics[/menu]")
+    console.print("[menu]3. ℹ️  Game Instructions[/menu]")
+    console.print("[menu]4. 🚪 Exit[/menu]")
     
     choice = Prompt.ask(
-        "\nSelect an option (1-4)",
+        "\n[menu]Select an option (1-4)[/menu]",
         choices=["1", "2", "3", "4"],
         default="1"
     )
@@ -33,13 +28,13 @@ def show_main_menu():
 
 def show_game_menu():
     """Display the in-game menu"""
-    console.print("\n[bold]Game Menu:[/bold]")
-    console.print("1. 🔄 Make a Guess")
-    console.print("2. 🏃‍♂️ Give Up")
-    console.print("3. ↩️  Return to Main Menu")
+    console.print("\n[menu]Game Menu:[/menu]")
+    console.print("[menu]1. 🔄 Make a Guess[/menu]")
+    console.print("[menu]2. 🏃‍♂️ Give Up[/menu]")
+    console.print("[menu]3. ↩️  Return to Main Menu[/menu]")
     
     choice = Prompt.ask(
-        "Select an option (1-3)",
+        "[menu]Select an option (1-3)[/menu]",
         choices=["1", "2", "3"],
         default="1"
     )
@@ -49,12 +44,10 @@ def show_game_menu():
 def show_instructions():
     """Display game instructions"""
     console.clear()
-    console.print(
-        Panel.fit(
-            "[bold]📖 GAME INSTRUCTIONS[/bold]",
-            style=theme["secondary"],
-            subtitle="How to Play Wordle"
-        )
+    print_fancy_panel(
+        "[info]📖 GAME INSTRUCTIONS[/info]",
+        title="How to Play Wordle",
+        style="info"
     )
     
     instructions = """
@@ -78,21 +71,19 @@ def show_instructions():
 def show_statistics(stats: dict):
     """Display user statistics"""
     console.clear()
-    console.print(
-        Panel.fit(
-            "[bold]📊 YOUR STATISTICS[/bold]",
-            style=theme["info"],
-            subtitle="Game Performance Overview"
-        )
+    print_fancy_panel(
+        "[info]📊 YOUR STATISTICS[/info]",
+        title="Game Performance Overview",
+        style="info"
     )
     
     if stats['total_games'] == 0:
-        console.print("No games played yet. Start playing to see your stats!")
+        console.print("[info]No games played yet. Start playing to see your stats![/info]")
     else:
-        console.print(f"🎮 Total Games: {stats['total_games']}")
-        console.print(f"✅ Games Won: {stats['games_won']}")
-        console.print(f"❌ Games Lost: {stats['games_lost']}")
-        console.print(f"📈 Win Percentage: {stats['win_percentage']:.1f}%")
+        console.print(f"[info]🎮 Total Games: {stats['total_games']}[/info]")
+        console.print(f"[info]✅ Games Won: {stats['games_won']}[/info]")
+        console.print(f"[info]❌ Games Lost: {stats['games_lost']}[/info]")
+        console.print(f"[info]📈 Win Percentage: {stats['win_percentage']:.1f}%[/info]")
     
-    console.print("\nPress Enter to continue...")
+    console.print("\n[info]Press Enter to continue...[/info]")
     input()

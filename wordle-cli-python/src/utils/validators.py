@@ -23,11 +23,11 @@ def validate_password(password: str) -> Optional[str]:
         return "Password must be at most 50 characters long"
     return None
 
-def validate_email(email: str) -> Optional[str]:
-    """Validate email format"""
-    if not email:
-        return "Email cannot be empty"
-    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    if not re.match(email_pattern, email):
-        return "Please enter a valid email address"
-    return None
+# def validate_email(email: str) -> Optional[str]:
+#     """Validate email format"""
+#     if not email:
+#         return "Email cannot be empty"
+#     email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+#     if not re.match(email_pattern, email):
+#         return "Please enter a valid email address"
+#     return None
